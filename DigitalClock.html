@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .clock {
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      padding: 40px 60px;
+      border-radius: 15px;
+      font-size: 60px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .date {
+      font-size: 22px;
+      margin-top: 15px;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div id="time">00:00:00</div>
+    <div class="date" id="date"></div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      // Time
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      // Format with leading zero
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
+
+      // Date
+      const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+      document.getElementById("date").textContent = now.toLocaleDateString("en-US", options);
+    }
+
+    // Update every second
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
