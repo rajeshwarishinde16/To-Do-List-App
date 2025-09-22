@@ -1,0 +1,26 @@
+<html>
+<script>
+function cat()
+{
+var a=document.getElementById("set").value;
+var b=document.getElementById("get").value;
+if (a!=b)
+{
+   alert("password is not correct");  
+}
+else
+{
+   alert("submit");
+}
+}
+</script>
+<body>
+<center>
+<label>password</label>
+<input type="password" id="set" placeholder="enter password"/>
+<label>conform password</label>
+<input type="password" id="get" placeholder="conform password"/><br><br>
+<button onclick="cat()">submit</button>
+</center>
+</body>
+</html>
